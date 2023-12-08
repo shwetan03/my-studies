@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<title>myStudies</title>
+		<link rel="stylesheet" type="text/css" href="styles.css">
+		<style>
+			#add-task {
+                display: grid;
+                background-color: #660066;
+                float: center;
+                width: 10%;
+                height: 100px;
+                padding: 15%;
+                padding-top: 5%;
+                margin-top: 0%;
+                margin-left: 32%;
+                color: white;
+            }
+
+            #add-task-form {
+                grid-row: 1;
+                padding: 4%;
+                padding-top: 2%;
+            }
+
+            #add-task-button {
+                padding: 7%;
+                margin: 20%;
+                margin-left: 25%;
+                float: center;
+            }
+
+            #add-task-label {
+                padding: 1%;
+                margin-left: 45%;
+                margin-bottom: 0%;
+                float: center;
+                font-size: 40px;
+            }
+
+            #error-div {
+                font-size: 100px;
+                float: left;
+                margin: 30px;
+                padding: 30px;
+            }
+
+            label {
+                padding: 1%;
+                margin: 2%;
+            }
+
+            select {
+                padding: 10px;
+            }
+		</style>
+	</head>
+
+	<body>
+		<div id="navbar">
+			<nav>
+				<ul id="navbar-list">
+					<li id="myStudies-title" class="nav-item"><h1><a href="/" id="home-link">myStudies</a></h1></li>
+					<li class="nav-item"><span><a href="/login" class="nav-link">Login</a></span></li>
+					<li class="nav-item"><span><a href="/create_account" class="nav-link">Create Account</a></span></li>
+					<li class="nav-item"><span><a href="/manage_tasks" class="nav-link">Manage Tasks</a></span></li>
+					<li class="nav-item"><span><a href="#" class="nav-link">Current Task</a></span></li>
+				</ul>
+			</nav>
+		</div>
+
+        <h3 id="add-task-label">Add a Task</h3>
+        
+		<form id="add-task-form" action="/add_task" method="post">
+            <div id="add-task">
+                <label for="task_name">Task Name:</label><br>
+                <input type="text" id="task_name" name="task_name"><br>
+                <label for="task_category">Task Category</label>
+                <select id="task_category" name="task_category">
+                    <option value="academic" selected>Academic</option>
+                    <option value="entertainment">Entertainment</option>
+                </select>
+                <label for="task_length">Task Length (in minutes):</label><br>
+                <input type="text" id="task_length" name="task_length"><br>
+                <input type="submit" value="Add Task" id="add-task-button" onforminput="errorMessage()">
+            </div>
+        </form>
+        <div id="error-div">
+            <span id="error"></span>
+        </div>
+        
+	</body>
+
+    <footer style="padding: 5%; margin-top: 20%;" id="footer-bar">
+		<p>2022 Shweta Narayanan | Skyline High School</p>
+	</footer>
+
+    <script>
+        function errorMessage() {
+            var error = document.getElementById("error");
+            if (document.getElementById(task_name).value == "" || document.getElementById(task_length).value == "") {
+                error.textContent = "Please enter all fields."
+                error.style.color = "black"
+/*                 error.innerHTML = "<span style='color: red;'>" +"Please enter all fields</span>"
+ */            } else if (isNan(document.getElementById(task_length).value)) {
+                error.textContent = "Task Length must be a number";
+                error.style.color = "black";
+            } else {
+                error.textContent = "";
+            }
+        }
+    </script>
+
+</html>

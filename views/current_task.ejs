@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<title>myStudies</title>
+		<link rel="stylesheet" type="text/css" href="styles.css">
+		<style>
+			#activity-dates {
+				color: black;
+				background-color: #f2f2f2;
+				float: left;
+				width: 33.33%;
+				height: 200px;
+				margin-top: 2%; /* Changed */
+			}
+			
+			#activities-h2 {
+				padding-left: 10%;
+			}
+			
+			#activity-list {
+				color: black;
+			}
+			
+			#recreational {
+				margin-left: 20px;
+			}
+
+			#add-activity {
+				float: center;
+				padding-left: 30%; /* Change made: add-task button moved to center of date div */
+			}
+			
+			.date {
+				padding-left: 20%;
+				font-size: 20px;
+			}
+			
+			.activity {
+				display: grid;
+				background-color:#ffccff;
+				padding: 40px;
+				margin-left: 500px;
+				margin-bottom: 70px;
+				margin-top: 70px;
+				width: 30%;
+				height: 100%;
+			}
+			
+			.activity-category {
+				grid-column: 1;
+				grid-row: 1;
+				background-color:#ffccff;
+				float: left;
+				margin-left: 20px;
+				
+			}
+			
+			.priority {
+				grid-column: 2;
+				grid-row: 1;
+				background-color:#ffccff;
+				float: right;
+			}
+			
+			.activity-title {
+				grid-column: 1;
+				grid-row: 1;
+				background-color:#ffccff;
+				float: left;
+				margin-left: 50px;
+				padding: 30px;
+			}
+			
+			.button {
+				padding: 20px;
+				background-color: #c560ab;
+			}
+			
+		
+			.edit {
+				grid-column: 1;
+				grid-row: 1;
+				float: left;
+			}
+			
+			.start {
+				grid-column: 1;
+				grid-row: 1;
+				float: right;
+			}
+		
+		</style>
+	</head>
+
+	<body>
+		<div id="navbar">
+			<nav>
+				<ul id="navbar-list">
+					<li id="myStudies-title" class="nav-item"><h1><a href="/" id="home-link">myStudies</a></h1></li>
+					<li class="nav-item"><span><a href="/login" class="nav-link">Login</a></span></li>
+					<li class="nav-item"><span><a href="/create_account" class="nav-link">Create Account</a></span></li>
+					<li class="nav-item"><span><a href="/manage_tasks" class="nav-link">Manage Tasks</a></span></li>
+					<li class="nav-item"><span><a href="#" class="nav-link">Current Task</a></span></li>
+				</ul>
+			</nav>
+		</div>
+
+		
+		
+		<div id="activity-dates"> <!-- Changed: Added task_queue size -->
+			<h2 id="activities-h2"><%= task_queue.size() %> Activity/Activities for:</h2>
+			<ul> <%var today = new Date();%>
+				<li class="date" id="date"><%= String(today.getMonth() + 1).padStart(2, '0') + '/' + String(today.getDate()).padStart(2, '0') + '/' + today.getFullYear()%></li>
+				<!-- <li class="date">March 4, 2022</li> -->
+			</ul>
+			<div id="add-activity">
+			
+				<form action="/add_task">
+					<button type="submit">Add Task</button><br>
+				</form>
+			</div>
+ 		</div>
+		
+		<div id="activity-list">
+			<ul id="activity-list-items">
+				<% if(task_list != null) { %>
+					<% for (var i=0; i < task_list.length; i++) { %>
+						<div class="activity"> 
+							<span class="activity-category"><%= task_list[i].task_type %></span>
+							<h3 class="activity-title"><%= task_list[i].task_name%> | <%= task_list[i].task_length%> minutes</h3>
+							<ul> <form action="/edit_task">
+								<% function save_index(){ %>
+										<% index = i;  %>       
+								<% } %>
+								<li class="button edit"><a href="/edit_task" class="button-link">edit task</a></li>
+								<% if (i == 0 && task_list[i].ongoing == false) { %>
+								<li class="button start"><a href="https://www.google.com/" class="button-link">start task</a></li>
+								<% } else if (i == 0) { %>
+								<li>Task in progress</li>
+								<% } %>
+							</form></ul> 
+						</div>
+					<% } %>
+				<% } %>
+			
+			</ul>		 
+		</div>
+	</body>
+
+    <footer style="padding: 5%; margin-top: 20%;" id="footer-bar">
+		<p>2022 Shweta Narayanan | Skyline High School</p>
+	</footer>
+
+</html>

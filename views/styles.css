@@ -1,0 +1,57 @@
+#myStudies-title {
+    float: left;
+}
+
+#navbar {
+    color: white;
+    background-color: #660066;
+}
+
+#navbar-list {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+#home-link {
+    display: inline;
+}
+
+#footer-bar {
+    color: white;
+    background-color: #660066;
+}
+
+.nav-item a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 45px;
+}
+
+.nav-item {
+    display: inline;
+    float: right;
+    padding: 20px;
+    font-size: 20px;
+}
+
+body {
+    font-family: Verdana, Arial, sans-serif;
+}
+
+h1 {
+    font-size: 55px;
+    padding: 15px;
+    margin: 5px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a:hover {
+    background-color: #330033;
+    color: white;
+}

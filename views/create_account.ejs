@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>myStudies</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        #account-creation {
+            display: grid;
+            background-color: #660066;
+            float: center;
+            width: 10%;
+            height: 100px;
+            padding: 25%;
+            padding-top: 5%;
+            padding-right: 20%;
+            padding-left: 20%;
+            margin-top: 0%;
+            margin-left: 25%;
+            color: white;
+        }
+
+        #account-creation-form {
+            grid-row: 1;
+            padding: 4%;
+            padding-top: 2%;
+            padding-bottom: 20%;
+            margin-bottom: 10%;
+        }
+
+        #account-creation-button {
+            padding: 7%;
+            margin: 20%;
+            margin-left: 25%;
+            float: center;
+        }
+
+        #account-creation-label {
+            padding: 1%;
+            margin-left: 45%;
+            margin-bottom: 0%;
+            float: center;
+            font-size: 40px;
+        }
+
+        label {
+            padding: 1%;
+            margin: 2%;
+        }
+
+        select {
+            padding: 10px;
+        }
+    </style>
+
+    <script>
+        function check_parent(that) {
+            if (that.value == "parent") {
+                document.getElementById("ifYes").style.display = "block";
+            } else {
+                document.getElementById("ifYes").style.display = "none";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="navbar">
+        <nav>
+            <ul id="navbar-list">
+                <li id="myStudies-title" class="nav-item"><h1><a href="/" id="home-link">myStudies</a></h1></li>
+					<li class="nav-item"><span><a href="/login" class="nav-link">Login</a></span></li>
+					<li class="nav-item"><span><a href="/create_account" class="nav-link">Create Account</a></span></li>
+					<li class="nav-item"><span><a href="/manage_tasks" class="nav-link">Manage Tasks</a></span></li>
+					<li class="nav-item"><span><a href="#" class="nav-link">Current Task</a></span></li>
+            </ul>
+        </nav>
+    </div>
+    <h3 id="account-creation-label">Create an Account</h3>
+    <form id="account-creation-form" action="/create_account" method="post">
+        <div id="account-creation">
+            <!-- <p onload="check_empty">You must enter all fields.</p>
+            
+            <p onload="check_student_act">Error: no student account with id</p>
+            <p onload="check_pswd_len">Password must be at least 8 characters</p>
+            <p onload="check_pswd_match">Password and re-entered password do not match.</p>
+            <p onload="check_valid_email">You must enter a valid email address</p> -->
+            <div class="left">
+                <label for="fname">First Name:</label>
+                <input type="text" id="fname" name="fname">
+            </div>
+            <div class="middle">
+                <label for="lname">Last Name:</label>
+                <input type="text" id="lname" name="lname">
+            </div>
+            <div class="right">
+                <label for="account_type">Student or parent?</label>
+                <select id="account_type" name="account_type" onchange="check_parent(this)">
+                    <option value="student" selected>Student</option>
+                    <option value="parent">Parent</option>
+                </select>
+            </div>
+            <div class="left">
+                <label for="email">Email:</label><br>
+                <input type="text" id="email" name="email">
+            </div>
+            <div class="middle">
+                <label for="pswd">Password:</label><br>
+            <input type="text" id="pswd" name="pswd">
+            </div>
+            <div class="right">
+                <label for="pswd_reenter">Re-enter Password:</label><br>
+                <input type="text" id="pswd_reenter" name="pswd_reenter"><br>
+            </div>
+
+            <div id="ifYes" style="display: none;" class="left">
+                <label for="associated_student_id">Associated Student ID</label> 
+                <input type="text" id="associated_student_id" name="associated_student_id"/><br />
+            </div>
+
+            <div class="middle">
+                <input type="submit" value="Create Account" id="account-creation-button">
+            </div>
+        </div>
+    </form>
+
+</body>
+
+<footer style="padding: 5%; margin-top: 20%;" id="footer-bar">
+    <p>2022 Shweta Narayanan | Skyline High School</p>
+</footer>
+
+</html>
